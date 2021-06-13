@@ -7,7 +7,7 @@
 
 .profile__welcome {
   margin: 0;
-  font-family: Inter;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -33,7 +33,7 @@
   margin-top: 220px;
   border: none;
   background: none;
-  font-family: Inter;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
@@ -51,7 +51,7 @@
   margin-top: 16px;
   border: none;
   background: none;
-  font-family: Inter;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -72,7 +72,7 @@
 }
 
 .profile__label {
-  font-family: Inter;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -84,7 +84,7 @@
 }
 
 .profile__value {
-  font-family: Inter;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 11px;

@@ -13,7 +13,7 @@ function Header({ Login }) {
 
   return (
     <div className={`header ${Login ? 'header__white' : ''}`}>
-      <img src={logo} alt="" className="header__logo"/>
+      <img src={logo} alt="logo" className="header__logo"/>
       <div className="header__links">
       {!Login ? (
         <>

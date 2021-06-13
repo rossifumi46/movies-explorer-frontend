@@ -31,14 +31,14 @@ function App() {
           <AboutMe/>
           <Footer/>
         </Route>
-        <Route path="/movies">
-          <Header Login={true}/>
-          <Movies />
-          <Footer/>
-        </Route>
         <Route path="/saved">
           <Header Login={true}/>
           <SavedMovies />
+          <Footer/>
+        </Route>
+        <Route path="/movies">
+          <Header Login={true}/>
+          <Movies />
           <Footer/>
         </Route>
         <Route path="/profile">

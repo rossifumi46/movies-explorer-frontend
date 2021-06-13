@@ -20,7 +20,7 @@ function AboutMe() {
             <a href="" className="about-me__social-link">Github</a>
           </div>
         </div>
-        <img src={ava} alt="" className="about-me__ava"/>
+        <img src={ava} alt="ava" className="about-me__ava"/>
       </div>
       <div className="about-me__portfolio">
         <h3 className="about-me__portfolio-title">Портфолио</h3>
@@ -28,19 +28,19 @@ function AboutMe() {
         <div className="about-me__wrapper">
           <div className="about-me__portfolio-link">
             <h4 className="about-me__link-title">Статичный сайт</h4>
-            <img src={svg} alt="" className="about-me__svg"/>
+            <img src={svg} alt="check" className="about-me__svg"/>
           </div>
         </div>
         <div className="about-me__wrapper">
           <div className="about-me__portfolio-link">
             <h4 className="about-me__link-title">Статичный сайт</h4>
-            <img src={svg} alt="" className="about-me__svg"/>
+            <img src={svg} alt="check" className="about-me__svg"/>
           </div>
         </div>
         <div className="about-me__wrapper">
           <div className="about-me__portfolio-link">
             <h4 className="about-me__link-title">Статичный сайт</h4>
-            <img src={svg} alt="" className="about-me__svg"/>
+            <img src={svg} alt="check" className="about-me__svg"/>
           </div>
         </div>
         </div>

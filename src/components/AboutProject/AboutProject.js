@@ -18,8 +18,12 @@ function AboutProject() {
         </div>
       </div>
       <div className="about-project__progress">
-        <div className="about-project__backend-progress"></div>
-        <div className="about-project__frontend-progress"></div>
+        <div className="about-project__backend-progress"><span className="about-project__progress-text about-project__progress-text_white">1 неделя</span></div>
+        <div className="about-project__frontend-progress"><span className="about-project__progress-text">4 неделя</span></div>
+      </div>
+      <div className="about-project__progress about-project__progress_after">
+        <div className="about-project__backend-progress about-project__progress_transparent"><span className="about-project__progress-text about-project__progress-text_grey">Back-end</span></div>
+        <div className="about-project__frontend-progress about-project__progress_transparent"><span className="about-project__progress-text about-project__progress-text_grey">Front-end</span></div>
       </div>
     </div>
   )

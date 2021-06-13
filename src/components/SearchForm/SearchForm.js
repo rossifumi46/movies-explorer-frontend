@@ -6,8 +6,8 @@ function SearchForm() {
   return (
     <form className="search-form">
       <div className="search-form__container">
-        <img src={icon} alt="" className="search-form__icon"/>
-        <input type="text" className="search-form__input" placeholder="Фильм"/>
+        <img src={icon} alt="search" className="search-form__icon"/>
+        <input required type="text" className="search-form__input" placeholder="Фильм"/>
         <button className="search-form__submit" type="submit">Найти</button>
       </div>
       <div className="search-form__checkbox">

@@ -6,7 +6,7 @@ function Register() {
   return (
     <div className="register">
       <div className="register__container">
-      <img src={logo} alt="" className="register__logo"/>
+      <img src={logo} alt="logo" className="register__logo"/>
       <h1 className="register__title">Добро Пожаловать!</h1>
       <form className="register__form">
         <div className="register__inputs">
