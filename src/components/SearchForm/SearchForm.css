@@ -78,7 +78,7 @@
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .search-form {
     display: block;
     margin: 80px 10px 0;

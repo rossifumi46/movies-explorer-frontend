@@ -1,5 +1,5 @@
 .techs {
-  padding: 70px;
+  padding: 50px;
   /* margin: 0 auto; */
   background: #F5F5F5;
 }
@@ -79,7 +79,6 @@
   letter-spacing: -0.04em;
 
   color: #000000;
-  margin-left: 10px;
 }
 
 .techs__card:first-child {
@@ -90,6 +89,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.techs__cards {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 84px);
+  grid-gap: 10px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
@@ -118,13 +124,6 @@
   }
 
   .techs__cards {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: 84px 84px;
-    grid-gap: 10px;
-  }
-
-  .techs__card {
-    margin-left: 0;
+    grid-template-columns: repeat(auto-fit, 90px);
   }
 }
