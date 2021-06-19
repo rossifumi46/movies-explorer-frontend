@@ -1,0 +1,150 @@
+.register {
+  display: flex;
+  justify-content: center;
+
+}
+
+.register__title {
+  margin: 0;
+  margin-top: 40px;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  /* identical to box height */
+  color: #000;
+}
+
+.register__logo {
+  width: 38px;
+}
+
+.register__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register__container {
+  margin-top: 70px;
+  min-width: 400px;
+}
+
+.register__inputs {
+
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+}
+
+.register__submit {
+  margin-top: 135px;
+  height: 45px;
+  border: none;
+  background: #000000;
+  border-radius: 3px;
+  color: #FFF;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  text-align: center;
+}
+
+.register__already-text {
+  margin: 0;
+  margin-top: 16px;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #A0A0A0;
+}
+
+.register__link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.input__container {
+  margin-top: 24px;
+}
+
+.input__container:first-child {
+  margin-top: 40px;
+}
+
+.register__label {
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+
+  color: #A0A0A0;
+}
+
+.register__input {
+  margin-top: 5px;
+  border: none;
+  background: none;
+  border-bottom: 1px solid #E8E8E8;
+  width: 100%;
+  padding: 0;
+  padding-bottom: 10px;
+
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  color: #000000;
+  outline: none;
+}
+
+.register__input:focus {
+  border-bottom-color: #000000;
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .register {
+    box-sizing: border-box;
+    height: 100vh;
+    padding-bottom: 30px;
+  }
+  .register__container {
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .register__submit {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__already-text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__form {
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .register__already-text {
+    margin-top: 14px;
+  }
+}

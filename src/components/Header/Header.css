@@ -1,0 +1,101 @@
+.header {
+  padding: 20px 70px;
+  display: flex;
+  justify-content: space-between;
+  background: #F3C1F8;
+  position: relative;
+}
+
+.header__signup {
+  text-decoration: none;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  color: #000000;
+}
+
+.header__links {
+  display: flex;
+}
+
+.header__signin {
+  padding: 8px 20px;
+  border-radius: 3px;
+  background: #000;
+  text-decoration: none;
+  margin-left: 30px;
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+
+  display: flex;
+  align-items: center;
+
+  color: #FFFFFF;
+}
+
+.header__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header__list-item {
+  margin-left: 20px;
+}
+
+.header__list-item:first-child {
+  margin-left: 0;
+}
+
+.header__account-link {
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.header__white {
+  background: #FFFFFF;
+}
+
+.header__account-link__account {
+  margin-left: 70px;
+  font-weight: 500;
+}
+
+.header__burger {
+  display: none;
+}
+
+.header__desktop {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 18px 14px;
+  }
+
+  .header__desktop {
+    display: none;
+  }
+
+  .header__burger {
+    display: block;
+  }
+}
