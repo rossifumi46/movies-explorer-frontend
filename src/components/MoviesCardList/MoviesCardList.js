@@ -1,45 +1,12 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-const card = {
-  saved: true,
-}
-
-const anotherCard = {
-  saved: false,
-}
-
-function MoviesCardList({ savedCard }) {
+function MoviesCardList({ list, onRemove, savedCard, onLike }) {
   return (
-    <div className="movies-card-list__wrapper">
-      <div className="movies-card-list">
-        {!savedCard ? (
-          <>
-            <MoviesCard saved={true} savedCard />
-            <MoviesCard saved={true} savedCard/>
-            <MoviesCard saved={true} savedCard />
-            <MoviesCard saved={true} savedCard />
-            <MoviesCard saved={true} savedCard />
-            <MoviesCard saved={false} savedCard />
-            <MoviesCard saved={false} savedCard />
-            <MoviesCard saved={false} savedCard />
-            <MoviesCard saved={false} savedCard />
-          </>
-        ): (
-          <>
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-            <MoviesCard />
-          </>
-        )}
-      </div>
-      <button className="movies-card-list__more_btn">Еще</button>
+    <div className="movies-card-list">
+      {list?.map(card => (
+        <MoviesCard key={savedCard ? card._id : card.id} saved={card.saved} savedCard={savedCard} card={card} onRemove={onRemove} onLike={onLike}/>
+      ))}
     </div>
   )
 }

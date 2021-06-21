@@ -1,5 +1,4 @@
 import './AboutProject.css';
-import promoImg from '../../images/promo.png';
 
 function AboutProject() {
   return (
