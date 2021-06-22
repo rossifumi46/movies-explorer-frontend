@@ -46,6 +46,11 @@
   margin-left: 20px;
 }
 
+.search-form__submit_disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}
+
 .search-form__label-text {
   margin-left: 15px;
   font-family: Inter, 'Helvetica Neue', Arial, sans-serif;

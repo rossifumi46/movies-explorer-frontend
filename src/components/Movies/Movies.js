@@ -38,39 +38,16 @@ function Movies() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!movies && params) {
-      const movies = localStorage.getItem('movies');
-      if (!movies) {
-        setPreloader(true);
-        getMovies()
-        .then(data => {
-          setMovies(data);
-          localStorage.setItem('movies', JSON.stringify(data));
-          const token = localStorage.getItem('token');
-          api.setToken(token);
-          return api.getSavedMovies();
-        })
-        .then(data => {
-          setError(false);
-          setSavedMovies(data.movies);
-          setPreloader(false);
-        })
-        .catch(err => setError(true))
-      } else {
-        console.log(movies);
-        setMovies(JSON.parse(movies));
-        const token = localStorage.getItem('token');
-        api.setToken(token);
-        setPreloader(true);
-        api.getSavedMovies()
-          .then(data => {
-            setSavedMovies(data.movies);
-            setPreloader(false);
-          })
-          .catch(err => setError(true))
-      }
-    }
-    if (savedMovies) {
+    const movies = localStorage.getItem('movies');
+    if (movies) setMovies(JSON.parse(movies));
+    const params = localStorage.getItem('params');
+    if (params) setParams(JSON.parse(params));
+    const filtered = localStorage.getItem('filtered');
+    if (filtered) setFiltered(JSON.parse(filtered));
+  }, []);
+
+  useEffect(() => {
+    if (savedMovies && movies && params) {
       const filtered = movies
         ?.filter(movie => filter(movie, params));
       const newFiltered = filtered?.map(movie => {
@@ -84,7 +61,37 @@ function Movies() {
         }
         return movie;
       });
+      localStorage.setItem('filtered', JSON.stringify(newFiltered));
       setFiltered(newFiltered);
+    } else {
+      if (!movies) {
+        setPreloader(true);
+        getMovies()
+          .then(data => {
+            setMovies(data);
+            localStorage.setItem('movies', JSON.stringify(data));
+            setPreloader(false);
+          })
+          .catch(err => {
+            setPreloader(false);
+            setError(true)
+          });
+      }
+      if (!savedMovies) {
+        const token = localStorage.getItem('token');
+        api.setToken(token);
+        setPreloader(true);
+        api.getSavedMovies()
+          .then(data => {
+            setError(false);
+            setSavedMovies(data.movies);
+            setPreloader(false);
+        })
+        .catch(err => {
+          setPreloader(false);
+          setError(true)
+        });
+      }
     }
   }, [params, movies, savedMovies]);
 
@@ -96,11 +103,19 @@ function Movies() {
 
   const handleSearch = (params) => {
     if (!params.query && !params.isShort) {
-
       return;
     }
-    setParams(params);
+    localStorage.setItem('params', JSON.stringify(params));
+    setParams(params)
   }
+
+  useEffect(() => {
+    setSavedParams(params)
+  }, [params]);
+
+  const [savedParams, setSavedParams] = useState(null);
+
+  const handleChange = (params) => setSavedParams(params)
 
   const handleLike = ({
     country,
@@ -146,7 +161,6 @@ function Movies() {
         })
         .catch();
     } else {
-      console.log(_id);
       api.removeMovie(_id)
         .then((res) => {
           const newFiltered = filtered?.map(movie => {
@@ -166,17 +180,24 @@ function Movies() {
 
   return (
     <div className="movies">
-      <SearchForm onSearch={handleSearch} />
+      <SearchForm onSearch={handleSearch} params={savedParams} onChange={handleChange} />
       {preloader && <Preloader />}
-      {error && <h2 className="movies__not-found">Что-то пошло не так...</h2>}
-      {list?.length === 0 && <h2 className="movies__not-found">Ничего не найдено</h2>}
-      <MoviesCardList list={list} onLike={handleLike}/>
-      <button
-        className={`movies__more-btn ${showBtn ? 'movies__more-btn_show' : ''}`}
-        onClick={() => setLength(length+getChange())}
-      >
-        Еще
-      </button>
+      {error
+        ? <h2 className="movies__not-found">Что-то пошло не так...</h2>
+        : (
+          <>
+          {list?.length === 0 && <h2 className="movies__not-found">Ничего не найдено</h2>}
+          <MoviesCardList list={list} onLike={handleLike}/>
+          <button
+            className={`movies__more-btn ${showBtn ? 'movies__more-btn_show' : ''}`}
+            onClick={() => setLength(length+getChange())}
+          >
+            Еще
+          </button>
+          </>
+        )
+      }
+
     </div>
   )
 }

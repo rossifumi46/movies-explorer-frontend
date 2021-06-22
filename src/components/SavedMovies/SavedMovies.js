@@ -17,6 +17,15 @@ function SavedMovies() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    const movies = localStorage.getItem('savedMovies');
+    if (movies) setMovies(JSON.parse(movies));
+    const params = localStorage.getItem('paramsSaved');
+    if (params) setParams(JSON.parse(params));
+    const filtered = localStorage.getItem('filteredSaved');
+    if (filtered) setFiltered(JSON.parse(filtered));
+  }, []);
+
+  useEffect(() => {
     if (!movies) {
       const token = localStorage.getItem('token');
       api.setToken(token);
@@ -25,6 +34,7 @@ function SavedMovies() {
       .then(data => {
         setError(false);
         setMovies(data.movies);
+        localStorage.setItem('savedMovies', JSON.stringify(data.movies));
         setPreloader(false);
       })
       .catch(err => setError(true));
@@ -32,8 +42,8 @@ function SavedMovies() {
 
     const filtered = movies
     ?.filter(movie => filter(movie, params));
-    console.log(filtered);
     setFiltered(filtered);
+    localStorage.setItem('filteredSaved', JSON.stringify(filtered));
   }, [params, movies]);
 
   const handleSearch = (params) => {
@@ -41,6 +51,7 @@ function SavedMovies() {
 
       return;
     }
+    localStorage.setItem('paramsSaved', JSON.stringify(params));
     setParams(params);
   }
 
@@ -57,13 +68,28 @@ function SavedMovies() {
       })
   }
 
+  useEffect(() => {
+    setSavedParams(params)
+  }, [params]);
+
+  const [savedParams, setSavedParams] = useState(null);
+
+  const handleChange = (params) => setSavedParams(params)
+
   return (
     <div className="movies">
-      <SearchForm onSearch={handleSearch} />
+      <SearchForm onSearch={handleSearch} params={savedParams} onChange={handleChange} />
       {preloader && <Preloader />}
-      {error && <h2 className="movies__not-found">Что-то пошло не так...</h2>}
-      {filtered?.length === 0 && <h2 className="movies__not-found">Ничего не найдено</h2>}
-      <MoviesCardList savedCard list={filtered} onRemove={handleRemove} />
+      {error
+        ? <h2 className="movies__not-found">Что-то пошло не так...</h2>
+        : (
+          <>
+            {filtered?.length === 0 && <h2 className="movies__not-found">Ничего не найдено</h2>}
+            <MoviesCardList savedCard list={filtered} onRemove={handleRemove} />
+          </>
+        )
+      }
+
     </div>
   )
 }

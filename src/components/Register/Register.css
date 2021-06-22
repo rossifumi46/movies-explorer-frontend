@@ -137,6 +137,23 @@
   white-space: normal;
 }
 
+.register__success {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.register__success-message {
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+  color: #2BE080;
+  white-space: normal;
+  margin-right: 10px;
+}
+
 .register__error_mb {
   margin-bottom: 10px;
 }

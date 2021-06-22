@@ -5,7 +5,7 @@ import { useFormWithValidation } from '../../utils/hooks';
 
 function Login({ onLogin }) {
 
-  const { values, handleChange, errors, isValid } = useFormWithValidation({});
+  const { values, handleChange, errors, isValid } = useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,11 +34,14 @@ function Login({ onLogin }) {
             <label htmlFor="" className="register__label">Пароль</label>
             <input
               className="register__input"
+              required
+              minLength="8"
               type="password"
               name="password"
               value={values.password}
               onChange={handleChange}
             />
+            {errors.password && <span className="register__error">{errors.password}</span>}
           </div>
         </div>
         <button disabled={!isValid} className={`register__submit ${!isValid ? 'register__submit_disabled' : ''}`} type="submit">Войти</button>

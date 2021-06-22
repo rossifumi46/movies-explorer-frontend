@@ -5,7 +5,7 @@ import { useFormWithValidation } from '../../utils/hooks';
 
 function Register({ onSignup }) {
 
-  const { values, handleChange, errors, isValid } = useFormWithValidation({});
+  const { values, handleChange, errors, isValid } = useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,9 +44,12 @@ function Register({ onSignup }) {
           <div className="input__container">
             <label htmlFor="" className="register__label">Пароль</label>
             <input
+              required
+              minLength="8"
               className="register__input"
               type="text"
               name="password"
+              type="password"
               value={values.password}
               onChange={handleChange}
             />

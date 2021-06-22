@@ -115,48 +115,51 @@ function App() {
   return loggedIn !== null && (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="App">
-        <Switch>
-          <Route path="/signup">
-            {!loggedIn ? <Register onSignup={handleSignup} /> : <Redirect to="/movies" />}
-          </Route>
-          <Route path="/login">
-            {!loggedIn ? <Login onLogin={handleLogin} /> : <Redirect to="/movies" />}
-          </Route>
-          <Route path="/" exact>
-            <Header Login={loggedIn}/>
-            <Promo/>
-            <AboutProject/>
-            <Techs/>
-            <AboutMe/>
-            <Footer/>
-          </Route>
-          <ProtectedRoute
-            path="/saved"
-            component={SavedMoviesPage}
-            loggedIn={loggedIn}
-          />
-          <ProtectedRoute
-            path="/movies"
-            component={MoviesPage}
-            loggedIn={loggedIn}
-          />
-          <ProtectedRoute
-            path="/profile"
-            component={ProfilePage}
-            loggedIn={loggedIn}
-            onSignout={handleSignout}
-          />
-          <Route>
-            <NotFound />
-          </Route>
-        </Switch>
-        <PagePreloader show={loading}>
-          {!error ? (
-            <Preloader />
-          ) : (
-            <ErrorInfo onClose={handleClose} />
-          )}
-        </PagePreloader>
+        {loading ? (
+          <PagePreloader show={loading}>
+            {!error ? (
+              <Preloader />
+            ) : (
+              <ErrorInfo onClose={handleClose} />
+            )}
+          </PagePreloader>
+        ) : (
+          <Switch>
+            <Route path="/signup">
+              {!loggedIn ? <Register onSignup={handleSignup} /> : <Redirect to="/movies" />}
+            </Route>
+            <Route path="/login">
+              {!loggedIn ? <Login onLogin={handleLogin} /> : <Redirect to="/movies" />}
+            </Route>
+            <Route path="/" exact>
+              <Header Login={loggedIn}/>
+              <Promo/>
+              <AboutProject/>
+              <Techs/>
+              <AboutMe/>
+              <Footer/>
+            </Route>
+            <ProtectedRoute
+              path="/saved"
+              component={SavedMoviesPage}
+              loggedIn={loggedIn}
+            />
+            <ProtectedRoute
+              path="/movies"
+              component={MoviesPage}
+              loggedIn={loggedIn}
+            />
+            <ProtectedRoute
+              path="/profile"
+              component={ProfilePage}
+              loggedIn={loggedIn}
+              onSignout={handleSignout}
+            />
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+        )}
       </div>
     </CurrentUserContext.Provider>
   );
