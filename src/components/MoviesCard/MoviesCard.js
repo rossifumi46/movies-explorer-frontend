@@ -1,23 +1,32 @@
 import './MoviesCard.css';
-import preview from '../../images/preview.png';
+import { URL } from '../../utils/MoviesApi';
 
 import { ReactComponent as SavedIcon } from '../../images/saved.svg'
 import { ReactComponent as RemoveIcon } from '../../images/remove.svg'
 
-function MoviesCard({ saved, savedCard }) {
+function MoviesCard({ card, saved, savedCard, onRemove, onLike }) {
   return (
-    <div className="movies-card">
+    <a className="movies-card" href={savedCard ? card.trailer : card.trailerLink } target="_blank" rel="noreferrer">
       <div className="movies-card__info">
-        <h3 className="movies-card__name">В погоне за Бенкси</h3>
-        <p className="movies-card__time">27 минут</p>
+        <h3 className="movies-card__name">{card.nameRU}</h3>
+        <p className="movies-card__time">{card.duration} минут</p>
       </div>
-      <img src={preview} alt="preview" className="moviescard__preview"/>
-      {savedCard ? (
-        <button disabled={saved} className={`movies-card__save-btn ${saved ? 'movies-card_saved' : ''}`}>{saved ? <SavedIcon /> : `Сохранить`}</button>
+      <img src={savedCard ? card.image : URL + card.image.url} alt="preview" className="moviescard__preview"/>
+      {!savedCard ? (
+        <button
+          onClick={(event) => { event.preventDefault(); onLike(card, !saved)}}
+          className={`movies-card__save-btn ${saved ? 'movies-card_saved' : ''}`}
+        >
+          {saved ? <SavedIcon /> : `Сохранить`}
+        </button>
       ) : (
-        <button className="movies-card__save-btn"><RemoveIcon /></button>
+        <button
+          onClick={(event) => { event.preventDefault(); onRemove(card._id);}}
+          className="movies-card__save-btn">
+          <RemoveIcon />
+        </button>
       )}
-    </div>
+    </a>
   )
 }
 
